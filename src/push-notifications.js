@@ -84,11 +84,7 @@ PN.prototype.send = function send(_regIds, data, callback) {
 
     // Classify each pushId for corresponding device
     for (const regId of regIds) {
-        if (regId.substring(0, 4) === 'http') {
-            regIdsWNS.push(regId);
-        } else if (/(amzn|adm)/i.test(regId)) {
-            regIdsADM.push(regId);
-        } else if (regId.length > 64) {
+        if (regId.length > 64) {
             regIdsGCM.push(regId);
         } else if (regId.length === 64) {
             regIdsAPN.push(regId);
